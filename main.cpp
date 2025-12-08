@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <iomanip>
-#include <algorithm>
 #include <cctype>
 
 using namespace std;
@@ -178,7 +177,7 @@ class VirtualStudentInfo {
      * Displays a formatted header followed by the student's
      * personal and academic information.
      */
-    void run() {
+    void runStudentInfo() {
       UI::header("Virtual Student Info");
 
       // Display static student information
@@ -219,7 +218,7 @@ class StudentGradeEvaluator {
      * Prompts for four grades (Prelim, Midterm, PreFinal, Final),
      * calculates the average, and displays pass/fail status.
      */
-    void run() {
+    void runStudentGradeEvaluator() {
       UI::header("Student Grade Evaluator");
 
       const int NUMBER_OF_GRADES = 4;      // Total number of grades to collect
@@ -319,7 +318,7 @@ class TriangleActivity {
      * Provides a menu for users to choose triangle type,
      * specify height, and view the generated patterns.
      */
-    void run() {
+    void runTriangleActivity() {
       // constant value of min and max value to required to pass
       const int MIN_MENU_OPTION = 1;
       const int MAX_MENU_OPTION = 4;
@@ -525,7 +524,7 @@ class CurrencyCalculator {
      * Provides a menu for currency exchange operations
      * including conversion and rate viewing.
      */
-    void run() {
+    void runCurrencyCalculator() {
       const int MIN_MENU_OPTION = 1;
       const int MAX_MENU_OPTION = 3;
       int menuChoice;
@@ -628,16 +627,16 @@ class Program {
         // Route to selected activity
         switch (menuChoice) {
         case 1:
-          studentInfo.run();
+          studentInfo.runStudentInfo();
           break;
         case 2:
-          gradeEvaluator.run();
+          gradeEvaluator.runStudentGradeEvaluator();
           break;
         case 3:
-          triangleActivity.run();
+          triangleActivity.runTriangleActivity();
           break;
         case 4:
-          currencyCalculator.run();
+          currencyCalculator.runCurrencyCalculator();
           break;
         case 5:
           UI::goodbyeMessage("Exiting program... Goodbye!\n");
