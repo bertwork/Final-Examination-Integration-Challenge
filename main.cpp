@@ -429,40 +429,56 @@ class CurrencyCalculator {
     void displayConversion(double amountInPHP, double fee, double netPHP, double usd, double eur, double jpy, double aud) {
       UI::header("Conversion Result");
       UI::line();
-      cout << fixed << setprecision(2);
-
+      
       // Display transaction summary
+      cout << fixed << setprecision(2);
       cout << setw(18) << left << "Original Amount" << ": ₱" << amountInPHP << "\n";
       cout << setw(18) << left << "Transaction Fee" << ": ₱" << fee << "\n";
       cout << setw(18) << left << "Net Amount" << ": ₱" << netPHP << "\n";
 
       // Table column widths for aligned output
-      const int label_w = 14;  // Currency label width
-      const int rate_w  = 14;  // Exchange rate width
-      const int val_w   = 12;  // Converted value width
+      const int LABEL_WIDTH = 14;  // Currency label width
+      const int RATE_WIDTH  = 14;  // Exchange rate width
+      const int VALUE_WIDTH   = 12;  // Converted value width
 
       UI::line();
       // Table header
-      cout << left << setw(label_w) << "Currency" 
-           << left << setw(rate_w) << "Rate (PHP per ₱1)" 
-           << right << setw(val_w) << "Converted" << "\n";
+      cout << left << setw(LABEL_WIDTH) << "Currency" 
+           << left << setw(RATE_WIDTH) << "Rate (PHP per ₱1)" 
+           << right << setw(VALUE_WIDTH) << "Converted" << "\n";
 
       // Display each currency conversion
-      cout << left << setw(label_w) << "USD ($)       " 
-           << left << setw(rate_w) << USD_RATE << "     " 
-           << usd << " USD\n";
+      // USD
+      ostringstream usdRateStr;
+      usdRateStr << fixed << setprecision(2) << USD_RATE << " PHP";
+      cout << left << setw(LABEL_WIDTH) << "USD ($)       "
+           << left << setw(RATE_WIDTH) << usdRateStr.str() << "      "
+           << fixed << setprecision(2) << usd << " USD\n"
+      ;
 
-      cout << left << setw(label_w) << "EUR (€)       " 
-           << left << setw(rate_w) << EUR_RATE << "     " 
-           << eur << " EUR\n";
+      // EUR
+      ostringstream eurRateStr;
+      eurRateStr << fixed << setprecision(2) << EUR_RATE << " PHP";
+      cout << left << setw(LABEL_WIDTH) << "EUR (€)       "
+           << left << setw(RATE_WIDTH) << eurRateStr.str() << "      "
+           << eur << " EUR\n"
+      ;
 
-      cout << left << setw(label_w) << "JPY (¥)       " 
-           << left << setw(rate_w) << JPY_RATE << "     " 
-           << jpy << " JPY\n";
+      // JPY
+      ostringstream jpyRateStr;
+      jpyRateStr << fixed << setprecision(2) << JPY_RATE << " PHP";
+      cout << left << setw(LABEL_WIDTH) << "JPY (¥)       "
+           << left << setw(RATE_WIDTH) << jpyRateStr.str() << "      "
+           << jpy << " JPY\n"
+      ;
 
-      cout << left << setw(label_w) << "AUD (A$)      " 
-           << left << setw(rate_w) << AUD_RATE << "     " 
-           << aud << " AUD\n";
+      // AUD
+      ostringstream audRateStr;
+      audRateStr << fixed << setprecision(2) << AUD_RATE << " PHP";
+      cout << left << setw(LABEL_WIDTH) << "AUD (A$)      "
+           << left << setw(RATE_WIDTH) << audRateStr.str() << "      "
+           << aud << " AUD\n"
+      ;
     }
 
     /**
@@ -520,7 +536,7 @@ class CurrencyCalculator {
 
         cout << "Currency Exchange Options:\n"
              << "1. Exchange Currency\n"
-             << "2. View Rates\n"
+             << "2. View Rates & Fee\n"
              << "3. Exit\n"
         ;
 
