@@ -4,6 +4,7 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -36,6 +37,13 @@ class UI {
       cout << string(45, '-') << "\n";
     }
 
+    /**
+     * @brief Displays a farewell or closing message to the user.
+     * 
+     * This method outputs the provided message to the console.
+     *
+     * @param message The message to display.
+   */
     static void goodbyeMessage(const string &message) {
       cout << message;
     }
@@ -220,7 +228,7 @@ class StudentGradeEvaluator {
       const int MAX_GRADE = 100;           // Max Grade required
 
       // Initialize grade entries with names and default values
-      Grade grades[NUMBER_OF_GRADES] = {
+      Grade gradeList[NUMBER_OF_GRADES] = {
         {"Prelim", 0},
         {"Midterm", 0},
         {"PreFinal", 0},
@@ -231,10 +239,10 @@ class StudentGradeEvaluator {
 
       // Collect and validate each grade
       for (int i = 0; i < NUMBER_OF_GRADES; i++) {
-        grades[i].value = InputValidator::getValidatedDouble(
-          "Enter " + grades[i].name + " Grade: ", MIN_GRADE, MAX_GRADE
+        gradeList[i].value = InputValidator::getValidatedDouble(
+          "Enter " + gradeList[i].name + " Grade: ", MIN_GRADE, MAX_GRADE
         );
-        sum += grades[i].value;
+        sum += gradeList[i].value;
       }
 
       // Calculate average grade
@@ -258,15 +266,15 @@ class StudentGradeEvaluator {
     };
 };
 
-// ================================================== TRIANGLE LOOP ACTIVITY CLASS =================================================
+// ================================================== TRIANGLE ACTIVITY CLASS =================================================
 /**
- * @class TriangleLoopActivity
+ * @class TriangleActivity
  * @brief Generates and displays triangle patterns using asterisks
  * 
  * This class provides an interactive interface for creating
  * right-aligned and inverted triangle patterns of specified heights.
  */
-class TriangleLoopActivity {
+class TriangleActivity {
   private:
     /**
      * @brief Displays a right-aligned triangle pattern
@@ -370,15 +378,15 @@ class TriangleLoopActivity {
     }
 };
 
-// ================================================== CURRENCY EXCHANGE CALCULATOR ================================================
+// ================================================== CURRENCY CALCULATOR ================================================
 /**
- * @class CurrencyExchangeCalculator
+ * @class CurrencyCalculator
  * @brief Converts Philippine Pesos to multiple foreign currencies
  * 
  * This class handles currency conversion with real-time rates,
  * applies transaction fees, and displays comprehensive results.
  */
-class CurrencyExchangeCalculator {
+class CurrencyCalculator {
   private:
     // Current exchange rates (PHP to foreign currency)
     const double USD_RATE = 58.2554;  // 1 USD = ₱58.2554
@@ -564,8 +572,8 @@ class Program {
     // Activity module instances
     VirtualStudentInfo studentInfo;
     StudentGradeEvaluator gradeEvaluator;
-    TriangleLoopActivity triangleActivity;
-    CurrencyExchangeCalculator currencyCalculator;
+    TriangleActivity triangleActivity;
+    CurrencyCalculator currencyCalculator;
 
   public:
     /**
