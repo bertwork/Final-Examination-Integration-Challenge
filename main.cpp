@@ -464,11 +464,13 @@ class CurrencyExchangeCalculator {
      * calculation, and result display.
      */
     void convertCurrency() {
+      const int MIN_AMOUNT = 100;
+      const int MAX_AMMOUNT = 100000;
       double amountInPHP;
 
       // Get PHP amount with validation
       amountInPHP = InputValidator::getValidatedDouble(
-        "Enter amount in PHP (₱): ", 100, 100000
+        "Enter amount in PHP (₱): ", MIN_AMOUNT, MAX_AMMOUNT
       );
 
       // Confirm transaction with user
@@ -501,7 +503,7 @@ class CurrencyExchangeCalculator {
      */
     void run() {
       const int MIN_MENU_OPTION = 1;
-      const int MAN_MENU_OPTION = 3;
+      const int MAX_MENU_OPTION = 3;
       int menuChoice;
 
       // Main calculator loop
@@ -515,7 +517,7 @@ class CurrencyExchangeCalculator {
         ;
 
         UI::line();
-        menuChoice = InputValidator::getValidatedChoice("Enter choice (1-3): ", MIN_MENU_OPTION, MAN_MENU_OPTION);
+        menuChoice = InputValidator::getValidatedChoice("Enter choice (1-3): ", MIN_MENU_OPTION, MAX_MENU_OPTION);
 
         // Exit Currency Exchange Calculator Activity
         if (menuChoice == 3) {
